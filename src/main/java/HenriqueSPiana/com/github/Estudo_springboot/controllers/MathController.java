@@ -68,7 +68,30 @@ public class MathController {
 
     //https://localhost:8080/math/mean/3/5
 
+    @RequestMapping("/mean/{num1}/{num2}")
+    public Double mean(@PathVariable("num1") String num1,@PathVariable("num2") String num2)throws UnsupportedMathOperationException{
+        if(!isNumeric(num1)||!isNumeric(num2) )  throw new UnsupportedMathOperationException("Please set a numeric value");
+        if(Sum(num1, num2)==0) throw new UnsupportedMathOperationException("enter a non-zero division");
+        if(num1.equals("0") & num1.equals("0") ) return 0D;
 
-    //https://localhost:8080/math/square/3/5
+        Double meanNumber = Sum(num1,num2)/2;
+        return meanNumber;
+
+
+    }
+
+
+
+    //https://localhost:8080/math/square/3
+    @RequestMapping("/square/{num}")
+    public Double square(@PathVariable("num") String num) throws UnsupportedMathOperationException{
+        if(!isNumeric(num)) throw new UnsupportedMathOperationException("Please set a numeric value");
+        if(num.equals("0")) throw new UnsupportedMathOperationException("enter a non-zero number");
+
+        Double squareNumber = Math.sqrt(convertToDouble(num));
+        return squareNumber;
+    }
+
+
 
 }
