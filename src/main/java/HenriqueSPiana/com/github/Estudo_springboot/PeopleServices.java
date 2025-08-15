@@ -1,5 +1,6 @@
 package HenriqueSPiana.com.github.Estudo_springboot;
 
+import HenriqueSPiana.com.github.Estudo_springboot.model.People;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -17,6 +18,14 @@ public class PeopleServices {
 
         logger.info("Finding one Person!");
 
+
+        People people = new People();
+        people.setId(counter.incrementAndGet());
+        people.setNome("Testonildo");
+        people.setSobrenome("Da silva");
+        people.setGenero("Homem");
+        people.setEndereco("Vila velha");
+        return people;
     }
 
 

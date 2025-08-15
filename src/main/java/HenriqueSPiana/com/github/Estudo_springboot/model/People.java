@@ -10,7 +10,7 @@ public class People implements Serializable {
 
     private long id;
     private String nome;
-    private String sobreNome;
+    private String Sobrenome;
     private String endereco;
     private String genero;
 
@@ -33,12 +33,12 @@ public class People implements Serializable {
         this.nome = nome;
     }
 
-    public String getSobreNome() {
-        return sobreNome;
+    public String getSobrenome() {
+        return Sobrenome;
     }
 
-    public void setSobreNome(String sobreNome) {
-        this.sobreNome = sobreNome;
+    public void setSobrenome(String Sobrenome) {
+        this.Sobrenome = Sobrenome;
     }
 
     public String getEndereco() {
@@ -61,11 +61,11 @@ public class People implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof People people)) return false;
-        return getId() == people.getId() && Objects.equals(getNome(), people.getNome()) && Objects.equals(getSobreNome(), people.getSobreNome()) && Objects.equals(getEndereco(), people.getEndereco()) && Objects.equals(getGenero(), people.getGenero());
+        return getId() == people.getId() && Objects.equals(getNome(), people.getNome()) && Objects.equals(getSobrenome(), people.getSobrenome()) && Objects.equals(getEndereco(), people.getEndereco()) && Objects.equals(getGenero(), people.getGenero());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getSobreNome(), getEndereco(), getGenero());
+        return Objects.hash(getId(), getNome(), getSobrenome(), getEndereco(), getGenero());
     }
 }
