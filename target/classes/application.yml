@@ -1,1 +1,15 @@
-spring.application.name=Estudo-springboot
+spring:
+  application:
+    name: Estudo-springboot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.driver
+    url: jdbc:mysql://localhost:3306/Estudo_springboot?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: 450202
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
