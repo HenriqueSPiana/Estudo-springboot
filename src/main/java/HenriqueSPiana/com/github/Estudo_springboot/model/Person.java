@@ -1,17 +1,29 @@
 package HenriqueSPiana.com.github.Estudo_springboot.model;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name= "person")
 public class Person implements Serializable {
 
     private static final long serialVersionUID =1L;
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "nome", nullable = false,length = 80)
     private String nome;
+
+    @Column(name = "Sobrenome", nullable = false,length = 80)
     private String Sobrenome;
+
+    @Column(name = "endereco", nullable = false,length = 100)
     private String endereco;
+
+    @Column(name = "genero", nullable = false,length = 6)
     private String genero;
 
 

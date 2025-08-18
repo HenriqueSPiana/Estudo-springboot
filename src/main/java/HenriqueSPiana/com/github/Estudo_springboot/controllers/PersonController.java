@@ -1,5 +1,5 @@
 package HenriqueSPiana.com.github.Estudo_springboot.controllers;
-import HenriqueSPiana.com.github.Estudo_springboot.PersonServices;
+import HenriqueSPiana.com.github.Estudo_springboot.services.PersonServices;
 import HenriqueSPiana.com.github.Estudo_springboot.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

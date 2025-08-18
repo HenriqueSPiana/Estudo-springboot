@@ -1,4 +1,4 @@
-package HenriqueSPiana.com.github.Estudo_springboot;
+package HenriqueSPiana.com.github.Estudo_springboot.services;
 
 import HenriqueSPiana.com.github.Estudo_springboot.model.Person;
 import org.slf4j.LoggerFactory;
