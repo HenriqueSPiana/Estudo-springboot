@@ -3,10 +3,7 @@ import HenriqueSPiana.com.github.Estudo_springboot.PersonServices;
 import HenriqueSPiana.com.github.Estudo_springboot.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class PersonController {
 
     @Autowired
     private PersonServices service;
-    //http://localhost:8080/person/{id}
+    //GET http://localhost:8080/person/{id}
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public Person findByid(@PathVariable("id") String id){
         Person personId = service.findByID(id);
@@ -24,11 +21,33 @@ public class PersonController {
     }
 
 
-    //http://localhost:8080/person/{id}
+    //GET http://localhost:8080/person
     @RequestMapping(method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Person> findAll(){
         List<Person> personId = service.findAll();
         return personId;
+    }
+
+    //POST http://localhost:8080/person
+    @RequestMapping(method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public Person create(@RequestBody Person person){
+
+       Person personId = service.create(person);
+        return personId;
+    }
+
+    //PUT http://localhost:8080/person
+    @RequestMapping(method = RequestMethod.PUT,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public Person update(@RequestBody Person person){
+       Person personId = service.update(person);
+        return personId;
+    }
+
+
+    //DELETE http://localhost:8080/person
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") String id){
+        service.delete(id);
     }
 
 }
