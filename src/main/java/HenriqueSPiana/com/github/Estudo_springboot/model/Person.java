@@ -3,7 +3,7 @@ package HenriqueSPiana.com.github.Estudo_springboot.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class People implements Serializable {
+public class Person implements Serializable {
 
     private static final long serialVersionUID =1L;
 
@@ -15,7 +15,7 @@ public class People implements Serializable {
     private String genero;
 
 
-    public People() {}
+    public Person() {}
 
     public long getId() {
         return id;
@@ -60,8 +60,8 @@ public class People implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof People people)) return false;
-        return getId() == people.getId() && Objects.equals(getNome(), people.getNome()) && Objects.equals(getSobrenome(), people.getSobrenome()) && Objects.equals(getEndereco(), people.getEndereco()) && Objects.equals(getGenero(), people.getGenero());
+        if (!(o instanceof Person person)) return false;
+        return getId() == person.getId() && Objects.equals(getNome(), person.getNome()) && Objects.equals(getSobrenome(), person.getSobrenome()) && Objects.equals(getEndereco(), person.getEndereco()) && Objects.equals(getGenero(), person.getGenero());
     }
 
     @Override
