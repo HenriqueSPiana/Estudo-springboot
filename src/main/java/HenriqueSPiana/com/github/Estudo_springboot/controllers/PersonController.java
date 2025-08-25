@@ -1,5 +1,6 @@
 package HenriqueSPiana.com.github.Estudo_springboot.controllers;
-import HenriqueSPiana.com.github.Estudo_springboot.data.dto.PersonDTO;
+import HenriqueSPiana.com.github.Estudo_springboot.data.dto.v1.PersonDTO;
+import HenriqueSPiana.com.github.Estudo_springboot.data.dto.v2.PersonDTOV2;
 import HenriqueSPiana.com.github.Estudo_springboot.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -34,6 +35,13 @@ public class PersonController {
     public PersonDTO create(@RequestBody PersonDTO person){
 
         PersonDTO personId = service.create(person);
+        return personId;
+    }
+
+    @PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonDTOV2 create(@RequestBody PersonDTOV2 person){
+
+        PersonDTOV2 personId = service.createV2(person);
         return personId;
     }
 

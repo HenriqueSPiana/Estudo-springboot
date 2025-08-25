@@ -1,7 +1,7 @@
 package HenriqueSPiana.com.github.Estudo_springboot.unitetests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
-import HenriqueSPiana.com.github.Estudo_springboot.data.dto.PersonDTO;
+import HenriqueSPiana.com.github.Estudo_springboot.data.dto.v1.PersonDTO;
 import HenriqueSPiana.com.github.Estudo_springboot.model.Person;
 
 

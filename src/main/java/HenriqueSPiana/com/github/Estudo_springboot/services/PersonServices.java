@@ -1,10 +1,12 @@
 package HenriqueSPiana.com.github.Estudo_springboot.services;
-import HenriqueSPiana.com.github.Estudo_springboot.data.dto.PersonDTO;
+import HenriqueSPiana.com.github.Estudo_springboot.data.dto.v1.PersonDTO;
+import HenriqueSPiana.com.github.Estudo_springboot.data.dto.v2.PersonDTOV2;
 import HenriqueSPiana.com.github.Estudo_springboot.exception.ResourceNotFoundException;
-import HenriqueSPiana.com.github.Estudo_springboot.mapper.ObjectMapper;
+
 import static HenriqueSPiana.com.github.Estudo_springboot.mapper.ObjectMapper.parseListObjects;
 import static HenriqueSPiana.com.github.Estudo_springboot.mapper.ObjectMapper.parseObject;
 
+import HenriqueSPiana.com.github.Estudo_springboot.mapper.custom.PersonMapper;
 import HenriqueSPiana.com.github.Estudo_springboot.model.Person;
 import HenriqueSPiana.com.github.Estudo_springboot.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -25,6 +27,9 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
+    @Autowired
+    PersonMapper converter;
+
     public List<PersonDTO> findAll(){
         List<PersonDTO> persons = parseListObjects(repository.findAll(),PersonDTO.class);
         return persons;
@@ -43,6 +48,13 @@ public class PersonServices {
         logger.info("Creating one person");
         var entity = parseObject(person,Person.class);
         PersonDTO savedPerson = parseObject(repository.save(entity),PersonDTO.class);
+        return savedPerson;
+    }
+
+    public PersonDTOV2 createV2(PersonDTOV2 person){
+        logger.info("Creating one person V2");
+        var entity = converter.convertDTOTOEntity(person);
+        PersonDTOV2 savedPerson = converter.convertEntityTODTO(repository.save(entity));
         return savedPerson;
     }
 

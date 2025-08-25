@@ -9,7 +9,7 @@ import java.util.List;
 
 
 
-import HenriqueSPiana.com.github.Estudo_springboot.data.dto.PersonDTO;
+import HenriqueSPiana.com.github.Estudo_springboot.data.dto.v1.PersonDTO;
 import HenriqueSPiana.com.github.Estudo_springboot.model.Person;
 import HenriqueSPiana.com.github.Estudo_springboot.unitetests.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;

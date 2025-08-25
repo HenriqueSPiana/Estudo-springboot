@@ -1,4 +1,4 @@
-package HenriqueSPiana.com.github.Estudo_springboot.data.dto;
+package HenriqueSPiana.com.github.Estudo_springboot.data.dto.v1;
 import java.io.Serializable;
 import java.util.Objects;
 
