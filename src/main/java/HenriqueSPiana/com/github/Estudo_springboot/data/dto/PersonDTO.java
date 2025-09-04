@@ -1,7 +1,10 @@
 package HenriqueSPiana.com.github.Estudo_springboot.data.dto;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@JsonPropertyOrder({"id","nome","sobrenome","genero","endereco"})
 public class PersonDTO implements Serializable {
 
     private static final long serialVersionUID =1L;
@@ -10,7 +13,7 @@ public class PersonDTO implements Serializable {
 
     private String nome;
 
-    private String Sobrenome;
+    private String sobrenome;
 
     private String endereco;
 
@@ -36,11 +39,11 @@ public class PersonDTO implements Serializable {
     }
 
     public String getSobrenome() {
-        return Sobrenome;
+        return sobrenome;
     }
 
-    public void setSobrenome(String Sobrenome) {
-        this.Sobrenome = Sobrenome;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public String getEndereco() {
