@@ -1,14 +1,18 @@
 package HenriqueSPiana.com.github.Estudo_springboot.data.dto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@JsonPropertyOrder({"id","nome","sobrenome","genero","endereco"})
+//@JsonPropertyOrder({"codigo","nome","sobrenome","genero","endereco"})
 public class PersonDTO implements Serializable {
 
     private static final long serialVersionUID =1L;
 
+
+//    @JsonProperty("codigo")
     private long id;
 
     private String nome;
@@ -16,7 +20,7 @@ public class PersonDTO implements Serializable {
     private String sobrenome;
 
     private String endereco;
-
+//    @JsonIgnore
     private String genero;
 
 
