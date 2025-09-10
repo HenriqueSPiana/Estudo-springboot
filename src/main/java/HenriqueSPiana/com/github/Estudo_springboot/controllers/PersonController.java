@@ -15,7 +15,7 @@ public class PersonController {
     @Autowired
     private PersonServices service;
     //GET http://localhost:8080/person/{id}
-    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public PersonDTO findByid(@PathVariable("id") Long id){
         PersonDTO personId = service.findByID(id);
         return personId;
@@ -23,14 +23,14 @@ public class PersonController {
 
 
     //GET http://localhost:8080/person
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public List<PersonDTO> findAll(){
         List<PersonDTO> personId = service.findAll();
         return personId;
     }
 
     //POST http://localhost:8080/person
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public PersonDTO create(@RequestBody PersonDTO person){
 
         PersonDTO personId = service.create(person);
@@ -38,7 +38,7 @@ public class PersonController {
     }
 
     //PUT http://localhost:8080/person
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public PersonDTO update(@RequestBody PersonDTO person){
         PersonDTO personId = service.update(person);
         return personId;
