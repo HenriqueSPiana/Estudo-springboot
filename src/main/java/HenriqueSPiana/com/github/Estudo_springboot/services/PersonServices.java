@@ -1,4 +1,5 @@
 package HenriqueSPiana.com.github.Estudo_springboot.services;
+import HenriqueSPiana.com.github.Estudo_springboot.controllers.PersonController;
 import HenriqueSPiana.com.github.Estudo_springboot.data.dto.PersonDTO;
 import HenriqueSPiana.com.github.Estudo_springboot.exception.ResourceNotFoundException;
 import HenriqueSPiana.com.github.Estudo_springboot.mapper.ObjectMapper;
@@ -10,6 +11,9 @@ import HenriqueSPiana.com.github.Estudo_springboot.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -34,6 +38,8 @@ public class PersonServices {
         logger.info("Finding one Person!");
         var entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this Id"));
         PersonDTO person = parseObject(entity,PersonDTO.class);
+
+        person.add(linkTo(methodOn(PersonController.class).findByid(id)).withSelfRel().withType("GET"));
         return person;
 
 

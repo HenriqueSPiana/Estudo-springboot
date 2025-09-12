@@ -14,7 +14,7 @@ public class PersonController {
 
     @Autowired
     private PersonServices service;
-    //GET http://localhost:8080/person/{id}
+    //GET http://localhost:8080/api/person/v1/{id}
     @GetMapping(value = "/{id}",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public PersonDTO findByid(@PathVariable("id") Long id){
         PersonDTO personId = service.findByID(id);
@@ -22,14 +22,14 @@ public class PersonController {
     }
 
 
-    //GET http://localhost:8080/person
+    //GET http://localhost:8080/api/person/v1
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public List<PersonDTO> findAll(){
         List<PersonDTO> personId = service.findAll();
         return personId;
     }
 
-    //POST http://localhost:8080/person
+    //POST http://localhost:8080/api/person/v1
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public PersonDTO create(@RequestBody PersonDTO person){
 
@@ -37,7 +37,7 @@ public class PersonController {
         return personId;
     }
 
-    //PUT http://localhost:8080/person
+    //PUT http://localhost:8080/api/person/v1
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public PersonDTO update(@RequestBody PersonDTO person){
         PersonDTO personId = service.update(person);
@@ -45,7 +45,7 @@ public class PersonController {
     }
 
 
-    //DELETE http://localhost:8080/person
+    //DELETE http://localhost:8080/api/person/v1
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         service.delete(id);
