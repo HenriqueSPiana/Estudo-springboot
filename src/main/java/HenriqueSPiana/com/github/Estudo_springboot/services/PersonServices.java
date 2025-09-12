@@ -38,8 +38,7 @@ public class PersonServices {
         logger.info("Finding one Person!");
         var entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this Id"));
         PersonDTO person = parseObject(entity,PersonDTO.class);
-
-        person.add(linkTo(methodOn(PersonController.class).findByid(id)).withSelfRel().withType("GET"));
+        addHateoasLink(id,person);
         return person;
 
 
@@ -73,4 +72,14 @@ public class PersonServices {
 
     }
 
+
+
+
+    private static void addHateoasLink(Long id, PersonDTO dto) {
+        dto.add(linkTo(methodOn(PersonController.class).findByid(id)).withSelfRel().withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).delete(id)).withRel("delete").withType("DELETE"));
+        dto.add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
+        dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("PUT"));
+    }
 }
